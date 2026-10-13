@@ -52,6 +52,16 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
   const previewX = useSpring(pointerX, { stiffness: 260, damping: 28, mass: 0.6 });
   const previewY = useSpring(pointerY, { stiffness: 260, damping: 28, mass: 0.6 });
 
+  // Footer links open a specific category ('altivio:services-category' carries the category id).
+  useEffect(() => {
+    const openCategory = (e: Event) => {
+      const id = (e as CustomEvent<string>).detail;
+      if (SERVICE_CATEGORIES.some((c) => c.id === id)) setActiveCategory(id);
+    };
+    window.addEventListener('altivio:services-category', openCategory);
+    return () => window.removeEventListener('altivio:services-category', openCategory);
+  }, []);
+
   useEffect(() => {
     const query = window.matchMedia('(hover: hover) and (pointer: fine)');
     const update = () => setCanHover(query.matches);

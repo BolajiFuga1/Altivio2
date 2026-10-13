@@ -1,101 +1,132 @@
 import React, { useState } from 'react';
+import { ArrowRight, ArrowUp, X } from 'lucide-react';
 import { AltivioLogo } from './AltivioLogo';
-import { ArrowUp, Shield, Lock, FileCode } from 'lucide-react';
+import { SERVICE_CATEGORIES } from '../data/servicesData';
+
+// Fill these in when Altivio's real details are ready. Empty values are hidden on the site.
+const CONTACT_EMAIL = '';
+const SOCIAL_LINKS: { label: string; href: string }[] = [];
+
+const OFFICES = ['San Francisco', 'London', 'Zurich'];
+
+const COMPANY_LINKS = [
+  { label: 'Our Work', href: '#portfolio' },
+  { label: 'AI Solutions', href: '#ai-solutions' },
+  { label: 'How We Work', href: '#approach' },
+  { label: 'Cost Estimator', href: '#estimator' },
+  { label: 'Contact', href: '#contact' },
+];
+
+// Tells the Services section which category tab to open, then scrolls to it.
+const SERVICES_CATEGORY_EVENT = 'altivio:services-category';
+const openServicesCategory = (categoryId: string) => {
+  window.dispatchEvent(new CustomEvent(SERVICES_CATEGORY_EVENT, { detail: categoryId }));
+  document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
+};
+
+const linkClass = 'text-[15px] text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors';
 
 export const Footer: React.FC = () => {
   const [modalType, setModalType] = useState<'privacy' | 'terms' | null>(null);
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   return (
-    <footer className="bg-purple-900 text-purple-200 py-16 text-xs">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-slate-800">
-          
-          {/* Brand Info */}
-          <div className="md:col-span-4 space-y-4">
-            <AltivioLogo size="md" theme="dark" />
-            <p className="text-slate-400 text-xs max-w-sm leading-relaxed">
-              Altivio turns big ideas into real products: AI tools, websites, mobile apps and brand design that lasts.
+    <footer className="bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 md:pt-20 pb-10">
+        <div className="grid grid-cols-2 lg:grid-cols-[minmax(0,4fr)_repeat(3,minmax(0,2fr))] gap-x-8 gap-y-12">
+          {/* Brand */}
+          <div className="col-span-2 lg:col-span-1 max-w-sm">
+            <AltivioLogo size="md" />
+            <p className="mt-5 text-[15px] leading-relaxed text-slate-600 dark:text-slate-400">
+              We turn big ideas into real products: AI tools, websites, mobile apps and lasting brands. You own
+              everything we make for you.
             </p>
-            <div className="pt-2 flex items-center gap-4 text-slate-500 text-[11px] font-mono">
-              <span>San Francisco · London · Zurich</span>
-            </div>
+            <a href="#contact" className="btn-ink mt-6 h-11 px-6 text-[15px] inline-flex items-center gap-2 group">
+              <span>Get a proposal</span>
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+            </a>
           </div>
 
-          {/* Quick Links Column 1: Core Services */}
-          <div className="md:col-span-3 space-y-3">
-            <h4 className="font-semibold text-white uppercase tracking-wider text-[11px]">
-              Services
-            </h4>
-            <ul className="space-y-2">
-              <li><a href="#services" className="hover:text-purple-400 transition-colors">AI Solutions</a></li>
-              <li><a href="#services" className="hover:text-purple-400 transition-colors">Mobile App Development</a></li>
-              <li><a href="#services" className="hover:text-purple-400 transition-colors">Website Development</a></li>
-              <li><a href="#services" className="hover:text-purple-400 transition-colors">Website & App Design</a></li>
-              <li><a href="#services" className="hover:text-purple-400 transition-colors">Brand Identity & Strategy</a></li>
-              <li><a href="#services" className="hover:text-purple-400 transition-colors">Packaging & Printed Goods</a></li>
+          {/* Services, by category */}
+          <nav aria-label="Services">
+            <h3 className="text-sm font-medium text-slate-900 dark:text-white">Services</h3>
+            <ul className="mt-4 space-y-3">
+              {SERVICE_CATEGORIES.filter((c) => c.id !== 'all').map((category) => (
+                <li key={category.id}>
+                  <a
+                    href="#services"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      openServicesCategory(category.id);
+                    }}
+                    className={linkClass}
+                  >
+                    {category.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          {/* Company */}
+          <nav aria-label="Company">
+            <h3 className="text-sm font-medium text-slate-900 dark:text-white">Company</h3>
+            <ul className="mt-4 space-y-3">
+              {COMPANY_LINKS.map((link) => (
+                <li key={link.label}>
+                  <a href={link.href} className={linkClass}>
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          {/* Contact */}
+          <div className="col-span-2 sm:col-span-1">
+            <h3 className="text-sm font-medium text-slate-900 dark:text-white">Contact</h3>
+            <ul className="mt-4 space-y-3">
+              {CONTACT_EMAIL && (
+                <li>
+                  <a href={`mailto:${CONTACT_EMAIL}`} className={linkClass}>
+                    {CONTACT_EMAIL}
+                  </a>
+                </li>
+              )}
+              <li>
+                <a href="#contact" className={linkClass}>
+                  Send us a message
+                </a>
+              </li>
+              <li className="text-[15px] text-slate-600 dark:text-slate-400">{OFFICES.join(', ')}</li>
+              {SOCIAL_LINKS.length > 0 && (
+                <li className="flex flex-wrap gap-x-4 gap-y-2 pt-1">
+                  {SOCIAL_LINKS.map((social) => (
+                    <a key={social.label} href={social.href} target="_blank" rel="noreferrer" className={linkClass}>
+                      {social.label}
+                    </a>
+                  ))}
+                </li>
+              )}
             </ul>
           </div>
-
-          {/* Quick Links Column 2: Navigation (matching user mockup links: Home, Advisors, Contact Services, Contact Us) */}
-          <div className="md:col-span-3 space-y-3">
-            <h4 className="font-semibold text-white uppercase tracking-wider text-[11px]">
-              Company
-            </h4>
-            <ul className="space-y-2">
-              <li><a href="#" className="hover:text-purple-400 transition-colors">Home</a></li>
-              <li><a href="#portfolio" className="hover:text-purple-400 transition-colors">Our Work</a></li>
-              <li><a href="#testimonials" className="hover:text-purple-400 transition-colors">Client Success Stories</a></li>
-              <li><a href="#estimator" className="hover:text-purple-400 transition-colors">Price Estimator</a></li>
-              <li><a href="#approach" className="hover:text-purple-400 transition-colors">How We Work</a></li>
-              <li><a href="#contact" className="hover:text-purple-400 transition-colors">Contact Services</a></li>
-              <li><a href="#contact" className="hover:text-purple-400 transition-colors">Contact Us</a></li>
-            </ul>
-          </div>
-
-          {/* Back to top & Guarantee */}
-          <div className="md:col-span-2 space-y-4 flex flex-col justify-between">
-            <div>
-              <h4 className="font-semibold text-white uppercase tracking-wider text-[11px] mb-2">
-                Our promise
-              </h4>
-              <p className="text-[11px] text-slate-500 leading-normal">
-                You own 100% of everything we make for you: code, designs and files.
-              </p>
-            </div>
-
-            <button
-              onClick={scrollToTop}
-              className="p-3 bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white rounded-xl border border-slate-800 transition-colors flex items-center justify-between group cursor-pointer"
-            >
-              <span>Back to Top</span>
-              <ArrowUp className="w-3.5 h-3.5 group-hover:-translate-y-0.5 transition-transform" />
-            </button>
-          </div>
-
         </div>
 
-        {/* Bottom copyright row matching user mockup */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-slate-500 text-[11px]">
-          <div>
-            © 2026 Altivio, Inc. All rights reserved. Elevating Ideas into Digital Reality.
-          </div>
-
+        {/* Bottom row */}
+        <div className="mt-14 md:mt-16 pt-6 border-t border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-sm text-slate-500 dark:text-slate-400">
+          <span>© 2026 Altivio, Inc. All rights reserved.</span>
           <div className="flex items-center gap-6">
-            <button
-              onClick={() => setModalType('privacy')}
-              className="hover:text-slate-300 transition-colors cursor-pointer"
-            >
-              Privacy Policy
+            <button onClick={() => setModalType('privacy')} className="hover:text-slate-900 dark:hover:text-white transition-colors cursor-pointer">
+              Privacy
+            </button>
+            <button onClick={() => setModalType('terms')} className="hover:text-slate-900 dark:hover:text-white transition-colors cursor-pointer">
+              Terms
             </button>
             <button
-              onClick={() => setModalType('terms')}
-              className="hover:text-slate-300 transition-colors cursor-pointer"
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              className="inline-flex items-center gap-1.5 hover:text-slate-900 dark:hover:text-white transition-colors cursor-pointer group"
             >
-              Terms of Service
+              Back to top
+              <ArrowUp className="w-3.5 h-3.5 transition-transform group-hover:-translate-y-0.5" />
             </button>
           </div>
         </div>
@@ -103,29 +134,36 @@ export const Footer: React.FC = () => {
 
       {/* Privacy / Terms modal */}
       {modalType && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm">
-          <div className="bg-slate-900 border border-slate-800 text-slate-200 rounded-2xl max-w-lg p-6 space-y-4 shadow-2xl">
-            <div className="flex items-center justify-between">
-              <h3 className="font-display font-bold text-white text-lg">
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="legal-title"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-sm"
+          onClick={() => setModalType(null)}
+        >
+          <div
+            className="bg-white dark:bg-slate-900 rounded-[20px] max-w-lg w-full p-6 sm:p-8 shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between gap-4">
+              <h3 id="legal-title" className="font-display text-2xl text-slate-900 dark:text-white">
                 {modalType === 'privacy' ? 'Privacy Policy' : 'Terms of Service'}
               </h3>
               <button
                 onClick={() => setModalType(null)}
-                className="text-slate-400 hover:text-white text-sm"
+                aria-label="Close"
+                className="p-1.5 rounded-full text-slate-500 hover:text-slate-900 dark:hover:text-white cursor-pointer"
               >
-                ✕
+                <X className="w-4 h-4" />
               </button>
             </div>
-            <p className="text-xs text-slate-400 leading-relaxed">
+            <p className="mt-4 text-[15px] text-slate-600 dark:text-slate-400 leading-relaxed">
               {modalType === 'privacy'
                 ? 'Altivio is committed to strict data confidentiality. We do not sell, rent, or monetize your contact or project submission data. All technical schematics and briefs are protected under commercial non-disclosure agreements.'
                 : 'All engineering deliverables, brand assets, source codes, and documentation delivered by Altivio become the exclusive intellectual property of the commissioning client upon final sprint settlement.'}
             </p>
-            <div className="text-right">
-              <button
-                onClick={() => setModalType(null)}
-                className="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg text-xs font-semibold cursor-pointer"
-              >
+            <div className="mt-6 text-right">
+              <button onClick={() => setModalType(null)} className="btn-ink h-10 px-5 text-sm cursor-pointer">
                 Close
               </button>
             </div>
