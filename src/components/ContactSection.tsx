@@ -111,15 +111,9 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ proposalEstimate
       });
       setIsSubmitted(true);
     } catch (err: any) {
-      console.warn('Backend proposal submission error, falling back gracefully:', err);
-      // Fallback response for offline resilience
-      setSubmissionResponse({
-        proposalId: `prop_${Date.now()}`,
-        referenceCode: `ALT-2026-${Math.floor(1000 + Math.random() * 9000)}`,
-        estimatedSprintStart: 'Next Monday',
-        assignedLead: currentLead
-      });
-      setIsSubmitted(true);
+      console.error('Proposal submission failed:', err);
+      // Never show a fake confirmation: the visitor must know the request did not reach us.
+      setErrorMessage("We couldn't send your request just now. Please try again in a few minutes.");
     } finally {
       setIsSubmitting(false);
     }
@@ -468,6 +462,11 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ proposalEstimate
                     </button>
                   </div>
 
+                  {errorMessage && (
+                    <p role="alert" className="text-center text-[13px] text-rose-700 dark:text-rose-300">
+                      {errorMessage}
+                    </p>
+                  )}
                   <p className="text-[11px] text-center text-slate-500 dark:text-slate-400 pt-1">
                     No spam, ever. Everything you share stays confidential.
                   </p>

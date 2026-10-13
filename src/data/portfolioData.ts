@@ -1,4 +1,8 @@
 import { PortfolioProject } from '../types';
+import telemedicineImage from '../assets/images/altivio_telemedicine_case_1790419310693.jpg';
+import fintechImage from '../assets/images/altivio_fintech_mobile_case_1790419324246.jpg';
+import aiDashboardImage from '../assets/images/altivio_ai_engineering_dashboard_1790419350794.jpg';
+import luxuryImage from '../assets/images/altivio_luxury_packaging_case_1790419338324.jpg';
 
 export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
   {
@@ -6,7 +10,7 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     title: 'PulseCare Telemedicine Platform',
     category: 'Website & Mobile App',
     client: 'PulseCare Health Inc.',
-    image: '/src/assets/images/altivio_telemedicine_case_1790419310693.jpg',
+    image: telemedicineImage,
     headline: 'An online doctor service where patients can see a specialist by secure video call.',
     description: 'Altivio designed and built a complete online clinic that connects more than 40,000 patients with licensed specialists. Patients book a visit, share their health details, see a doctor on a private, smooth video call, and get prescriptions sent straight to their pharmacy.',
     stats: [
@@ -30,7 +34,7 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     title: 'Aura Wealth & FinTech Mobile Platform',
     category: 'Mobile App Design & Development',
     client: 'Aura Financial Technologies',
-    image: '/src/assets/images/altivio_fintech_mobile_case_1790419324246.jpg',
+    image: fintechImage,
     headline: 'A smooth, modern banking app for saving, sending money and growing savings automatically.',
     description: 'We built a fast banking app for iPhone and Android that handled more than $450M in its first 9 months. Users log in with Face ID or a fingerprint, send money to friends instantly, and feel a gentle vibration to confirm every payment.',
     stats: [
@@ -54,7 +58,7 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     title: 'SynapseML AI Research Assistant',
     category: 'AI Solutions & Website',
     client: 'Cognitive Dynamics Global',
-    image: '/src/assets/images/altivio_ai_engineering_dashboard_1790419350794.jpg',
+    image: aiDashboardImage,
     headline: 'An AI assistant that reads thousands of financial documents and answers questions in seconds.',
     description: 'Altivio built an AI assistant for financial analysts. It searches more than 10 million company reports, finds the right answer in under half a second, and shows exactly where each fact came from so it can be checked.',
     stats: [
@@ -78,7 +82,7 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     title: 'Aethelgard Haute Couture & Packaging',
     category: 'Brand Identity & Packaging Design',
     client: 'Aethelgard Paris',
-    image: '/src/assets/images/altivio_luxury_packaging_case_1790419338324.jpg',
+    image: luxuryImage,
     headline: 'A complete luxury brand look: logo, shopping bags, clothing tags and a seasonal lookbook.',
     description: 'A complete brand look, in print and online, for an independent Paris fashion house. We designed thick, premium shopping bags with raised logos, metallic clothing tags, woven labels, and a 56-page lookbook for the new collection.',
     stats: [
