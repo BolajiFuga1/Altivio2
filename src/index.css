@@ -1,0 +1,276 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Cohere-inspired palette: warm neutrals (slate), deep forest green as the
+   accent (purple), coral highlights (lime). The original component classes
+   resolve to these, so every section picks up the new look. */
+@theme {
+  --font-sans: 'Geist', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: 'Space Grotesk', 'Geist', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, monospace;
+
+  --color-slate-50: #faf9f6;
+  --color-slate-100: #f0eee9;
+  --color-slate-200: #e4e1da;
+  --color-slate-300: #cfcbc2;
+  --color-slate-400: #9a968e;
+  --color-slate-500: #6b6862;
+  --color-slate-600: #4d4b47;
+  --color-slate-700: #33322f;
+  --color-slate-800: #212121;
+  --color-slate-900: #17171c;
+  --color-slate-950: #0e0e11;
+
+  --color-purple-50: #eef2ee;
+  --color-purple-100: #dce6de;
+  --color-purple-200: #c3d3c7;
+  --color-purple-300: #a7c2ae;
+  --color-purple-400: #8fb39a;
+  --color-purple-500: #5d8a6f;
+  --color-purple-600: #39594d;
+  --color-purple-700: #355146;
+  --color-purple-800: #1f3a2b;
+  --color-purple-900: #152717;
+  --color-purple-950: #0d1a0f;
+
+  --color-lime-50: #fff3ef;
+  --color-lime-100: #ffe3da;
+  --color-lime-200: #ffc9b8;
+  --color-lime-300: #ffae98;
+  --color-lime-400: #ff9478;
+  --color-lime-500: #ff7759;
+  --color-lime-600: #e85c3d;
+  --color-lime-700: #b8452c;
+  --color-lime-800: #7d2f1e;
+  --color-lime-900: #4a1b11;
+  --color-lime-950: #2a0f09;
+
+  --color-coral: #ff7759;
+  --color-lavender: #d18ee2;
+  --color-forest: #152717;
+  --color-moss: #39594d;
+  --color-cream: #f0eee9;
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  :root.dark,
+  html.dark {
+    color-scheme: dark;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    color: #212121;
+    background-color: #ffffff;
+    overflow-x: hidden;
+    transition: background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1), color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  html.dark body {
+    color: #f0eee9;
+    background-color: #0e0e11;
+  }
+
+  h1, h2, .font-display {
+    font-family: var(--font-display);
+  }
+}
+
+/* Unlayered so they win over the bold/extrabold utilities in the components:
+   Cohere sets its headlines in one regular weight with tight tracking. */
+h1, h2, .font-display {
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+}
+
+/* Small uppercase labels above headings read as monospace, like Cohere's eyebrows. */
+.uppercase[class*="tracking-wide"] {
+  font-family: var(--font-mono);
+  font-weight: 500;
+}
+
+/* Primary action: black pill on light, inverted on dark. */
+.btn-ink {
+  background-color: #17171c;
+  color: #fff;
+  border-color: transparent;
+  border-radius: 9999px;
+}
+.btn-ink:hover {
+  background-color: #39594d;
+}
+/* Tactile press feedback on every primary button. */
+.btn-ink {
+  transition: background-color 0.2s ease, transform 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-ink:active {
+  transform: translateY(1px) scale(0.98);
+}
+.btn-ink * {
+  color: inherit;
+}
+html.dark .btn-ink {
+  background-color: #faf9f6;
+  color: #17171c;
+}
+html.dark .btn-ink:hover {
+  background-color: #cfcbc2;
+}
+
+/* Soft, layered "photographic" gradient used behind hero media, after Cohere's imagery. */
+.cohere-media {
+  background:
+    radial-gradient(45% 60% at 8% 12%, rgba(255, 178, 150, 0.9), transparent 70%),
+    radial-gradient(40% 55% at 92% 22%, rgba(209, 142, 226, 0.75), transparent 70%),
+    radial-gradient(60% 70% at 30% 100%, rgba(57, 89, 77, 0.95), transparent 70%),
+    linear-gradient(135deg, #efe3cf 0%, #b9cbb3 45%, #6f8f7c 75%, #39594d 100%);
+}
+/* Project stack geometry. --stack-top clears the fixed header (announcement bar + nav),
+   --stack-step is how much lower each later card pins (the visible "tab" of the card below),
+   and --stack-h sizes cards so the top card always fits on screen, down to a usable minimum. */
+.project-stack {
+  --stack-top: 108px;
+  --stack-step: 40px;
+  --stack-h: max(380px, min(560px, calc(100dvh - var(--stack-top) - (var(--stack-count, 1) - 1) * var(--stack-step) - 16px)));
+}
+@media (min-width: 1024px) {
+  .project-stack {
+    --stack-top: 116px;
+    --stack-step: 48px;
+  }
+}
+
+/* AI solutions panel: a warm coral glow drifting over deep forest, after the reference's light trail. */
+.ai-glow {
+  background:
+    radial-gradient(55% 32% at 52% 46%, rgba(255, 168, 128, 0.95), transparent 70%),
+    radial-gradient(75% 55% at 50% 45%, rgba(255, 119, 89, 0.75), transparent 72%),
+    radial-gradient(40% 35% at 25% 65%, rgba(232, 92, 61, 0.55), transparent 70%),
+    radial-gradient(45% 50% at 85% 20%, rgba(209, 142, 226, 0.35), transparent 70%),
+    linear-gradient(160deg, #1f3a2b 0%, #0d1a0f 100%);
+}
+
+/* Connector between flow steps, with a light travelling along it to show the direction of work.
+   Horizontal when the panel is wide enough for the whole chain, vertical otherwise. */
+.ai-flow-link {
+  position: relative;
+  display: block;
+  width: 1px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.35);
+  overflow: hidden;
+}
+@container (min-width: 640px) {
+  .ai-flow-link {
+    width: clamp(20px, 3.5vw, 48px);
+    height: 1px;
+  }
+}
+.ai-flow-link::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 5px;
+  height: 5px;
+  margin: -2.5px 0 0 -2.5px;
+  border-radius: 9999px;
+  background: #fff;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .ai-flow-link::after {
+    animation: ai-flow-v 1.8s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  }
+  @container (min-width: 640px) {
+    .ai-flow-link::after {
+      animation-name: ai-flow-h;
+    }
+  }
+}
+@keyframes ai-flow-h {
+  from { transform: translateX(-30px); }
+  to { transform: translateX(30px); }
+}
+@keyframes ai-flow-v {
+  from { transform: translateY(-14px); }
+  to { transform: translateY(14px); }
+}
+
+/* Deep forest panel with soft lavender and moss light, for the first project card. */
+.stack-forest {
+  background:
+    radial-gradient(55% 70% at 85% 15%, rgba(209, 142, 226, 0.28), transparent 70%),
+    radial-gradient(60% 80% at 10% 100%, rgba(143, 179, 154, 0.32), transparent 70%),
+    linear-gradient(160deg, #1f3a2b 0%, #0d1a0f 100%);
+}
+.cohere-grain {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 0.5px, transparent 0.5px);
+  background-size: 2px 2px;
+  mix-blend-mode: overlay;
+}
+
+@layer base {
+
+  code, pre, .font-mono {
+    font-family: var(--font-mono);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f0eee9;
+}
+html.dark ::-webkit-scrollbar-track {
+  background: #17171c;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+html.dark ::-webkit-scrollbar-thumb {
+  background: #1e293b;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+/* Subtle dot grid pattern */
+.bg-grid-pattern {
+  background-image: radial-gradient(rgba(17, 22, 24, 0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+html.dark .bg-grid-pattern {
+  background-image: radial-gradient(rgba(239, 243, 243, 0.08) 1px, transparent 1px);
+}
+
+/* Subtle line grid pattern */
+.bg-subtle-lines {
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+html.dark .bg-subtle-lines {
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+/* Horizontal scrollers (e.g. filter tabs on phones) without a visible scrollbar. */
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

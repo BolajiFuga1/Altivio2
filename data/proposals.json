@@ -1,0 +1,212 @@
+[
+  {
+    "id": "prop_1791458826167_3803",
+    "referenceCode": "ALT-2026-3803",
+    "createdAt": "2026-10-08T11:27:06.168Z",
+    "status": "UNDER_ARCHITECTURAL_REVIEW",
+    "name": "Giselle Monet",
+    "email": "giselle@haute-parfum.fr",
+    "serviceCategory": "Brand & Packaging",
+    "budgetRange": "Flexible",
+    "message": "Custom luxury embossed packaging dielines, bottle tags, and brand identity suite.",
+    "estimate": {
+      "totalCost": 0,
+      "timelineWeeks": 4,
+      "selectedServices": [
+        "Brand & Packaging"
+      ],
+      "tierName": "GROWTH"
+    },
+    "estimatedSprintStart": "Oct 12, 2026",
+    "assignedLead": "Julien Moreau (Executive Creative Director & Brand Lead)",
+    "squadSummary": "Julien Moreau (Brand & Packaging Lead) + Clara Chen (Design Tokens) + Alexander Vance (Web Delivery)",
+    "notifiedSlack": true,
+    "notifiedEmail": true
+  },
+  {
+    "id": "prop_1791458808230_4979",
+    "referenceCode": "ALT-2026-4979",
+    "createdAt": "2026-10-08T11:26:48.231Z",
+    "status": "UNDER_ARCHITECTURAL_REVIEW",
+    "name": "Liam O Connor",
+    "email": "liam@finflow.io",
+    "serviceCategory": "Mobile Platform",
+    "budgetRange": "Flexible",
+    "message": "We need an iOS Swift and Android Kotlin native application with real-time payment streams.",
+    "estimate": {
+      "totalCost": 0,
+      "timelineWeeks": 4,
+      "selectedServices": [
+        "Mobile Platform"
+      ],
+      "tierName": "GROWTH"
+    },
+    "estimatedSprintStart": "Oct 12, 2026",
+    "assignedLead": "Marcus Sterling (Principal Mobile Engineering Director)",
+    "squadSummary": "Marcus Sterling (Mobile Lead) + Clara Chen (App Design) + Alexander Vance (Cloud Backend)",
+    "notifiedSlack": true,
+    "notifiedEmail": true
+  },
+  {
+    "id": "prop_1791458802856_3247",
+    "referenceCode": "ALT-2026-3247",
+    "createdAt": "2026-10-08T11:26:42.865Z",
+    "status": "UNDER_ARCHITECTURAL_REVIEW",
+    "name": "Aria Vance",
+    "email": "aria@neurohealth.ai",
+    "serviceCategory": "Digital Product & AI",
+    "budgetRange": "Flexible",
+    "message": "We are developing neural models and LLM agent workflows for pathology analysis.",
+    "estimate": {
+      "totalCost": 0,
+      "timelineWeeks": 4,
+      "selectedServices": [
+        "Digital Product & AI"
+      ],
+      "tierName": "GROWTH"
+    },
+    "estimatedSprintStart": "Oct 12, 2026",
+    "assignedLead": "Dr. Elena Rostova (Principal AI & Neural Systems Architect)",
+    "squadSummary": "Dr. Elena Rostova (AI Lead) + Alexander Vance (Cloud Infra) + Clara Chen (UX Interaction)",
+    "notifiedSlack": true,
+    "notifiedEmail": true
+  },
+  {
+    "id": "prop_1791458059344_3323",
+    "referenceCode": "ALT-2026-3323",
+    "createdAt": "2026-10-08T11:14:19.344Z",
+    "status": "UNDER_ARCHITECTURAL_REVIEW",
+    "name": "Elena Rostova",
+    "email": "elena@rostovatech.com",
+    "serviceCategory": "Digital Product & AI",
+    "budgetRange": "$50k - $100k",
+    "message": "We are building a scalable fintech wealth management app with real-time portfolio analytics.",
+    "estimate": {
+      "totalCost": 39900,
+      "timelineWeeks": 6,
+      "selectedServices": [
+        "AI Engineering",
+        "Full-Stack Architecture"
+      ],
+      "tierName": "GROWTH"
+    },
+    "estimatedSprintStart": "Oct 12, 2026",
+    "assignedLead": "Alexander Vance (Principal Partner)",
+    "notifiedSlack": true,
+    "notifiedEmail": true
+  },
+  {
+    "id": "prop_1791458048625_1289",
+    "referenceCode": "ALT-2026-1289",
+    "createdAt": "2026-10-08T11:14:08.701Z",
+    "status": "UNDER_ARCHITECTURAL_REVIEW",
+    "name": "Alex Rivers",
+    "email": "alex@altivio-demo.com",
+    "serviceCategory": "All-in-One Product & Brand",
+    "budgetRange": "Flexible",
+    "message": "Testing Slack integration: We are developing an enterprise AI-assisted health platform with custom brand identity.",
+    "estimate": {
+      "totalCost": 39900,
+      "timelineWeeks": 6,
+      "selectedServices": [
+        "AI Engineering",
+        "Full-Stack Architecture"
+      ],
+      "tierName": "GROWTH"
+    },
+    "estimatedSprintStart": "Oct 12, 2026",
+    "assignedLead": "Alexander Vance (Principal Partner)",
+    "notifiedSlack": true,
+    "notifiedEmail": true
+  },
+  {
+    "id": "prop_1791278982911_5017",
+    "referenceCode": "ALT-2026-5017",
+    "createdAt": "2026-10-06T09:29:42.911Z",
+    "status": "UNDER_ARCHITECTURAL_REVIEW",
+    "name": "Sophia Laurent",
+    "email": "sophia@aethelgard.paris",
+    "serviceCategory": "All-in-One Product & Brand",
+    "budgetRange": "Flexible",
+    "message": "Luxury fragrance packaging, brand identity, and mobile catalogue.",
+    "estimate": {
+      "totalCost": 39900,
+      "timelineWeeks": 6,
+      "selectedServices": [
+        "AI Engineering",
+        "Full-Stack Architecture"
+      ],
+      "tierName": "GROWTH"
+    },
+    "estimatedSprintStart": "Oct 12, 2026",
+    "assignedLead": "Alexander Vance (Principal Partner)",
+    "notifiedSlack": true,
+    "notifiedEmail": true
+  },
+  {
+    "id": "prop_1791278880657_3164",
+    "referenceCode": "ALT-2026-3164",
+    "createdAt": "2026-10-06T09:28:00.663Z",
+    "status": "UNDER_ARCHITECTURAL_REVIEW",
+    "name": "Mark Andrew",
+    "email": "blessedt.bj@gmail.com",
+    "serviceCategory": "All-in-One Product & Brand",
+    "budgetRange": "$45k Est.",
+    "message": "Hi Altivio Team,\n\nI configured a scope using your Cost Estimator for the following modules: Similar Platform to SynapseML Autonomous Intelligence Engine, Full Product Architecture.\n\nScale tier: GROWTH\nEstimated timeline: 8 weeks\nEstimated investment: $45,000\n\nLet's schedule a discovery session to review this spec.",
+    "estimate": {
+      "totalCost": 45000,
+      "timelineWeeks": 8,
+      "selectedServices": [
+        "Similar Platform to SynapseML Autonomous Intelligence Engine",
+        "Full Product Architecture"
+      ],
+      "tierName": "GROWTH"
+    },
+    "estimatedSprintStart": "Oct 12, 2026",
+    "assignedLead": "Alexander Vance (Principal Partner)"
+  },
+  {
+    "id": "prop_1791278613713_4570",
+    "referenceCode": "ALT-2026-4570",
+    "createdAt": "2026-10-06T09:23:33.714Z",
+    "status": "UNDER_ARCHITECTURAL_REVIEW",
+    "name": "Marcus Sterling",
+    "email": "marcus@aura.tech",
+    "serviceCategory": "All-in-One Product & Brand",
+    "budgetRange": "Flexible",
+    "message": "Mobile app platform and AI engineering scope.",
+    "estimate": {
+      "totalCost": 39900,
+      "timelineWeeks": 6,
+      "selectedServices": [
+        "AI Engineering",
+        "Full-Stack Architecture"
+      ],
+      "tierName": "GROWTH"
+    },
+    "estimatedSprintStart": "Oct 12, 2026",
+    "assignedLead": "Alexander Vance (Principal Partner)"
+  },
+  {
+    "id": "prop_1790983520347_1433",
+    "referenceCode": "ALT-2026-1433",
+    "createdAt": "2026-10-02T23:25:20.398Z",
+    "status": "UNDER_ARCHITECTURAL_REVIEW",
+    "name": "Jane Founder",
+    "email": "jane@nextmed.io",
+    "serviceCategory": "All-in-One Product & Brand",
+    "budgetRange": "$30k - $60k",
+    "message": "We need full design and development for our telehealth platform.",
+    "estimate": {
+      "totalCost": 39900,
+      "timelineWeeks": 6,
+      "selectedServices": [
+        "AI Engineering",
+        "Full-Stack Architecture"
+      ],
+      "tierName": "GROWTH"
+    },
+    "estimatedSprintStart": "Oct 5, 2026",
+    "assignedLead": "Alexander Vance (Principal Partner)"
+  }
+]

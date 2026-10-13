@@ -1,0 +1,19 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Proposals collection: Public can submit proposals; read allowed by reference
+    match /proposals/{proposalId} {
+      allow create: if request.resource.data.name is string &&
+                    request.resource.data.email is string &&
+                    request.resource.data.referenceCode is string;
+      allow read: if true;
+      allow update, delete: if false;
+    }
+
+    // Alerts collection: Server-side write / read
+    match /alerts/{alertId} {
+      allow create, read: if true;
+      allow update, delete: if false;
+    }
+  }
+}

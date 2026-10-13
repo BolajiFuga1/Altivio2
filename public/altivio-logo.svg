@@ -1,0 +1,26 @@
+<svg viewBox="0 0 320 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="altivio-primary" x1="16" y1="68" x2="60" y2="12" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7C3AED" />
+      <stop offset="0.6" stop-color="#A855F7" />
+      <stop offset="1" stop-color="#C084FC" />
+    </linearGradient>
+    <linearGradient id="altivio-accent" x1="48" y1="46" x2="74" y2="68" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#BEF264" />
+      <stop offset="1" stop-color="#84CC16" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Geometric Delta Wing (Left) -->
+  <path d="M42 12L12 68H30L46 34L42 12Z" fill="url(#altivio-primary)" />
+  
+  <!-- Right Facet Wing -->
+  <path d="M42 12L64 50H52L39 24L42 12Z" fill="#DDD6FE" opacity="0.9" />
+  
+  <!-- Lime Accent Anchor -->
+  <path d="M54 46L72 68H48L54 46Z" fill="url(#altivio-accent)" />
+  
+  <!-- Wordmark ALTIVIO -->
+  <text x="96" y="52" font-family="system-ui, -apple-system, 'SF Pro Display', 'Inter', sans-serif" font-size="34" font-weight="900" letter-spacing="4" fill="#0F172A">ALTIVIO</text>
+  <text x="98" y="66" font-family="system-ui, -apple-system, 'SF Pro Text', 'Inter', sans-serif" font-size="9" font-weight="700" letter-spacing="2.5" fill="#7C3AED">ELEVATING DIGITAL REALITY</text>
+</svg>

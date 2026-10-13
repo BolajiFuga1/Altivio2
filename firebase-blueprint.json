@@ -1,0 +1,48 @@
+{
+  "entities": {
+    "Proposal": {
+      "title": "Proposal",
+      "description": "Client project proposal inquiry and architectural scope specification",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique proposal ID" },
+        "referenceCode": { "type": "string", "description": "Human-readable Altivio reference code" },
+        "createdAt": { "type": "string", "description": "ISO timestamp of submission" },
+        "status": { "type": "string", "description": "Status of the proposal review" },
+        "name": { "type": "string", "description": "Client or representative name" },
+        "email": { "type": "string", "format": "email", "description": "Client email" },
+        "serviceCategory": { "type": "string", "description": "Selected primary service focus" },
+        "budgetRange": { "type": "string", "description": "Indicated budget range" },
+        "message": { "type": "string", "description": "Brief description of the project" },
+        "estimatedSprintStart": { "type": "string", "description": "Projected kickoff date" },
+        "assignedLead": { "type": "string", "description": "Assigned architect" },
+        "notifiedSlack": { "type": "boolean", "description": "Whether real-time Slack alert was dispatched" },
+        "notifiedEmail": { "type": "boolean", "description": "Whether team notification email was logged" }
+      },
+      "required": ["id", "referenceCode", "createdAt", "status", "name", "email", "message"]
+    },
+    "AlertLog": {
+      "title": "AlertLog",
+      "description": "Real-time team notification audit log",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique alert ID" },
+        "proposalId": { "type": "string", "description": "Associated proposal ID" },
+        "channel": { "type": "string", "description": "Target destination such as Slack or Email" },
+        "dispatchedAt": { "type": "string", "description": "ISO timestamp of alert dispatch" },
+        "status": { "type": "string", "description": "Delivery status (e.g. DELIVERED, SIMULATED)" }
+      },
+      "required": ["id", "proposalId", "channel", "dispatchedAt", "status"]
+    }
+  },
+  "firestore": {
+    "/proposals/{proposalId}": {
+      "schema": "Proposal",
+      "description": "Client project proposals and statement of work specifications"
+    },
+    "/alerts/{alertId}": {
+      "schema": "AlertLog",
+      "description": "Real-time Slack and email notification delivery log"
+    }
+  }
+}

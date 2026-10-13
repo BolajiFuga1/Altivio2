@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      // Catch and neutralize unhandled rejections and errors from injected browser extensions (e.g. MetaMask, Phantom, etc.)
+      (function() {
+        var isExtensionError = function(str) {
+          if (!str) return false;
+          var s = String(str).toLowerCase();
+          return s.includes('metamask') || s.includes('ethereum') || s.includes('wallet') || s.includes('evm') || s.includes('extension') || s.includes('chrome-extension');
+        };
+
+        window.addEventListener('unhandledrejection', function(event) {
+          var reason = event.reason;
+          var msg = reason ? (reason.message || reason.stack || String(reason)) : '';
+          if (isExtensionError(msg)) {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+            return false;
+          }
+        }, true);
+
+        window.addEventListener('error', function(event) {
+          var msg = event.message || (event.error && (event.error.message || event.error.stack)) || '';
+          if (isExtensionError(msg) || (event.filename && event.filename.includes('chrome-extension:'))) {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+            return false;
+          }
+        }, true);
+      })();
+    </script>
+    <script>
+      try {
+        const theme = localStorage.getItem('altivio-theme');
+        if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+          document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      } catch (e) {}
+    </script>
+    <title>Altivio - Elevating Ideas into Digital Reality</title>
+    <meta name="description" content="Altivio is a premier digital technology & design company delivering AI Engineering, Web & Mobile App Development, Brand Identity, Packaging, and Creative Strategy." />
+    <meta property="og:title" content="Altivio - Elevating Ideas into Digital Reality" />
+    <meta property="og:description" content="Altivio is a premier digital technology & design company delivering AI Engineering, Web & Mobile App Development, Brand Identity, Packaging, and Creative Strategy." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400..600&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet" />
+  </head>
+  <body class="bg-white dark:bg-[#0E0E11] text-slate-900 dark:text-slate-100 antialiased font-sans selection:bg-slate-200 selection:text-slate-900 transition-colors duration-200">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
