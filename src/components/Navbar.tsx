@@ -27,20 +27,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEstimator }) => {
         isScrolled ? 'shadow-[0_1px_0_rgba(23,23,28,0.08)] dark:shadow-[0_1px_0_rgba(255,255,255,0.06)]' : ''
       }`}
     >
-      {/* Announcement bar */}
-      <div className="bg-slate-900 dark:bg-black text-white text-[13px] sm:text-sm">
-        <div className="max-w-7xl mx-auto px-4 h-9 flex items-center justify-center gap-3 text-center">
-          <span className="truncate">New: plan your project and get a price in minutes</span>
-          <a
-            href="#estimator"
-            onClick={onOpenEstimator}
-            className="hidden sm:inline underline underline-offset-4 decoration-white/50 hover:decoration-white whitespace-nowrap"
-          >
-            Get an estimate
-          </a>
-        </div>
-      </div>
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Zone 1: Single element Brand Zone */}

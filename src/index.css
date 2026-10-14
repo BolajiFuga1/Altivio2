@@ -131,17 +131,17 @@ html.dark .btn-ink:hover {
     radial-gradient(60% 70% at 30% 100%, rgba(57, 89, 77, 0.95), transparent 70%),
     linear-gradient(135deg, #efe3cf 0%, #b9cbb3 45%, #6f8f7c 75%, #39594d 100%);
 }
-/* Project stack geometry. --stack-top clears the fixed header (announcement bar + nav),
+/* Project stack geometry. --stack-top clears the fixed navbar,
    --stack-step is how much lower each later card pins (the visible "tab" of the card below),
    and --stack-h sizes cards so the top card always fits on screen, down to a usable minimum. */
 .project-stack {
-  --stack-top: 108px;
+  --stack-top: 72px;
   --stack-step: 40px;
   --stack-h: max(380px, min(560px, calc(100dvh - var(--stack-top) - (var(--stack-count, 1) - 1) * var(--stack-step) - 16px)));
 }
 @media (min-width: 1024px) {
   .project-stack {
-    --stack-top: 116px;
+    --stack-top: 80px;
     --stack-step: 48px;
   }
 }
@@ -273,4 +273,21 @@ html.dark .bg-subtle-lines {
   &::-webkit-scrollbar {
     display: none;
   }
+}
+
+/* Testimonials: the line under the current client fills up, then the next quote shows.
+   With reduced motion it stays full and never advances on its own. */
+.testimonial-progress {
+  transform: scaleX(1);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .testimonial-progress {
+    transform: scaleX(0);
+    animation-name: testimonial-fill;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+  }
+}
+@keyframes testimonial-fill {
+  to { transform: scaleX(1); }
 }

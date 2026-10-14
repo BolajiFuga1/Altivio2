@@ -266,7 +266,7 @@ const CinematicShowcase: React.FC<{ onEstimateClick: () => void }> = ({ onEstima
         <motion.div
           ref={introRef}
           style={{ opacity: introOpacity, y: introY, pointerEvents: introPointer, visibility: introVisibility }}
-          className="absolute inset-x-0 top-0 pt-[clamp(8rem,17vh,11rem)]"
+          className="absolute inset-x-0 top-0 pt-[clamp(6.5rem,14vh,9rem)]"
         >
           <HeroIntro onEstimateClick={onEstimateClick} />
         </motion.div>
@@ -292,7 +292,7 @@ const CompactShowcase: React.FC<{ onEstimateClick: () => void; reduce: boolean }
   }, [scrollYProgress, reduce]);
 
   return (
-    <div className="pt-32 md:pt-40">
+    <div className="pt-24 md:pt-32">
       <Reveal immediate>
         <HeroIntro onEstimateClick={onEstimateClick} />
       </Reveal>

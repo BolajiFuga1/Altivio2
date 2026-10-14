@@ -265,7 +265,7 @@ export const CostEstimator: React.FC<CostEstimatorProps> = ({
           <aside
             id="estimate-receipt"
             aria-live="polite"
-            className="lg:sticky lg:top-[124px] rounded-[24px] bg-white dark:bg-slate-900 p-6 sm:p-8 shadow-[0_24px_60px_-32px_rgba(13,26,15,0.35)]"
+            className="lg:sticky lg:top-[88px] rounded-[24px] bg-white dark:bg-slate-900 p-6 sm:p-8 shadow-[0_24px_60px_-32px_rgba(13,26,15,0.35)]"
           >
             <div className="flex items-baseline justify-between gap-4">
               <h3 className="font-display text-2xl text-slate-900 dark:text-white">Your estimate</h3>
